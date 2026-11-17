@@ -164,7 +164,34 @@ after the ENS subname and the deployed release site are verified. No mint,
 ENS change, listing, announcement, or transfer is performed by this repository
 setup.
 
-### First version mint
+### Released prototype
+
+`v0.1.1` is minted on Base in the existing DecentNFT collection as **token 81**:
+1,000 editions, a 10% royalty signal to the creator, **990 listed at 10 USDC**
+(listing 21), and **10 transferred to VoyagerRewards** for the level 9/10
+pickup integration. These are receipt-verified inventory snapshots, not
+guarantees of future stock or live gameplay deployment.
+
+- [ENS site](https://dhearse.decentagency.eth.limo/)
+- [Pages prototype](https://a-decent-agency.github.io/DHearse/)
+- [Support / verified checkout](https://thejollylama.github.io/DecentHead/supporter/buy.html?chainId=8453&escrow=0x31b07b83e99A9bdF379bf40225b8A80d3804C89d&listingId=21&priceUSDC=10000000)
+- [Mint and listing evidence](https://github.com/A-Decent-Agency/DHearse/releases/download/v0.1.1/supporter-minted.json)
+- [ENS profile and transaction evidence](https://github.com/A-Decent-Agency/DHearse/releases/download/v0.1.1/dhearse-ens-deployed.json)
+- [Voyager funding evidence](https://github.com/A-Decent-Agency/DHearse/releases/download/v0.1.1/dhearse-voyager-funding.json)
+
+The exact tagged-site CID is
+`bafybeibg25gr546vjschobyka5lvvf5mrdins4o3x7lgsdejzngbowgjci`.
+The ENS contenthash, avatar, banner and Pages URL were read back after
+confirmed Ethereum receipts. The public site and artwork were retrieved from
+IPFS and compared against the tagged files.
+
+Do not register or mint this release again. Reuse: the pinned DecentHead kit
+prepared the release; DecentMarket's existing `transactionFor`,
+`validateRelease`, `validateMetadata`, `verifyTransaction` and `verifyReceipt`
+verified registration/mint. The transfers/listing were adapted to the requested
+10 reward / 990 sale split without changing the frozen metadata or collection.
+
+### Future version mint process
 
 The initial `v0.1.1` Supporter can present the working prototype; real-device
 audio and second-host acceptance are separate product gates and are not implied
@@ -177,7 +204,7 @@ use a private-key `.env`:
    It is used only by the pinned release-preparation workflow to pin the tagged
    source, artwork, and metadata. Never put it in this repository or send it in
    chat.
-2. Publish the GitHub release for the exact tag `v0.1.1`. The workflow prepares
+2. Publish a GitHub release for a new exact tag; never remint `v0.1.1`. The workflow prepares
    and attaches `supporter-release.json` and `supporter-metadata.json`, then
    opens a steward review issue. It does not mint or list anything.
 3. Review the release assets and terms. In DecentMarket's Supporter Studio,
