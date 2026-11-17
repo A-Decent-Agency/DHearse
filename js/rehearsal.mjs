@@ -377,10 +377,14 @@ if (embedded && !trustedHost) {
 else {
   try {
     const response = await fetch(`${service}/api/private-rehearsal/status`, { cache: 'no-store', signal: AbortSignal.timeout(10000) });
+    if (!response.ok) throw new Error('Private rehearsal unavailable: this site needs a configured room service.');
     const state = await response.json();
-    if (!response.ok || !state.configured) throw new Error('Private rehearsal hosting is not enabled.');
+    if (!state.configured) throw new Error('Private rehearsal hosting is not enabled.');
     el('join-room').disabled = false;
     status(inviteRoomId ? 'Invitation ready. Sign consent to join this private rehearsal.'
       : 'Private rehearsal is available. Sign consent; no transaction or public-broadcast permission is created.');
-  } catch (error) { status(error.message || 'Private rehearsal unavailable.'); }
+  } catch (error) {
+    el('join-room').disabled = true;
+    status(error.message || 'Private rehearsal unavailable.');
+  }
 }

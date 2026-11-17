@@ -166,7 +166,7 @@ setup.
 
 ### First version mint
 
-The initial `v0.1.0` Supporter can present the working prototype; real-device
+The initial `v0.1.1` Supporter can present the working prototype; real-device
 audio and second-host acceptance are separate product gates and are not implied
 by the mint. Keep the release description clear that this is a prototype.
 
@@ -177,7 +177,7 @@ use a private-key `.env`:
    It is used only by the pinned release-preparation workflow to pin the tagged
    source, artwork, and metadata. Never put it in this repository or send it in
    chat.
-2. Publish the GitHub release for the exact tag `v0.1.0`. The workflow prepares
+2. Publish the GitHub release for the exact tag `v0.1.1`. The workflow prepares
    and attaches `supporter-release.json` and `supporter-metadata.json`, then
    opens a steward review issue. It does not mint or list anything.
 3. Review the release assets and terms. In DecentMarket's Supporter Studio,
@@ -198,6 +198,10 @@ and sets its contenthash to the verified site CID, `avatar` to
 `ipfs://SITE_CID/img/banner.svg`, and `url` to
 `https://a-decent-agency.github.io/DHearse/`. Verify the records after receipts;
 release preparation itself never writes ENS.
+
+The `v0.1.0` preparation is retained as historical, unminted evidence.
+`v0.1.1` corrects the unavailable-service message for static hosting; it does
+not replace the already pinned `v0.1.0` assets.
 
 Pages and IPFS serve the public prototype interface, not the Node audio
 service. Live rooms still require the documented worker configuration.

@@ -450,4 +450,14 @@ test('browser mock opens an isolated room, gates the booth, plays invited bandma
   assert.match(elements.get('status').textContent, /MetaMask already has a pending request/);
   assert.equal(elements.get('status').dataset.error, 'true');
   events.pagehide();
+
+  await t.test('a static host shows the missing-service state without parsing an HTML error page', async () => {
+    let parsed = false;
+    global.fetch = async () => ({ ok: false, status: 404, json: async () => { parsed = true; throw Error('HTML is not JSON'); } });
+    elements.get('join-room').disabled = true;
+    await import(`../js/rehearsal.mjs?static=${Date.now()}`);
+    assert.equal(parsed, false);
+    assert.equal(elements.get('join-room').disabled, true);
+    assert.match(elements.get('status').textContent, /this site needs a configured room service/);
+  });
 });
