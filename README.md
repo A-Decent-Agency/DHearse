@@ -179,6 +179,14 @@ guarantees of future stock or live gameplay deployment.
 - [ENS profile and transaction evidence](https://github.com/A-Decent-Agency/DHearse/releases/download/v0.1.1/dhearse-ens-deployed.json)
 - [Voyager funding evidence](https://github.com/A-Decent-Agency/DHearse/releases/download/v0.1.1/dhearse-voyager-funding.json)
 
+The [Office campus](https://github.com/A-Decent-Agency/a-decent-agency.github.io/pull/33),
+[Canopy inventory](https://github.com/TheJollyLaMa/DecentCanopy/pull/75), and
+[Voyager early-slot integration](https://github.com/TheJollyLaMa/DecentVoyager/pull/44)
+are merged and deployed. The live Voyager referee issued token 81 at level 10;
+this is not a live capture or redemption claim. Remaining worker deployment,
+genuine second-host adoption, optional DCal evaluation and real-device/musician
+acceptance belong to [DHearse issue #4](https://github.com/A-Decent-Agency/DHearse/issues/4).
+
 The exact tagged-site CID is
 `bafybeibg25gr546vjschobyka5lvvf5mrdins4o3x7lgsdejzngbowgjci`.
 The ENS contenthash, avatar, banner and Pages URL were read back after
