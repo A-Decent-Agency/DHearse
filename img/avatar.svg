@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">DHearse</title>
+  <desc id="desc">A gold microphone inside a private rehearsal-room arch, with teal audio signals.</desc>
+  <rect width="512" height="512" rx="112" fill="#171021"/>
+  <path d="M92 344V228a164 164 0 0 1 328 0v116" fill="none" stroke="#33233d" stroke-width="28"/>
+  <path d="M116 290v34m32-62v90m216-90v90m32-62v34" fill="none" stroke="#00d4aa" stroke-linecap="round" stroke-width="12"/>
+  <rect x="218" y="146" width="76" height="136" rx="38" fill="#e5c76d"/>
+  <path d="M192 238v18a64 64 0 0 0 128 0v-18m-64 82v48m-38 0h76" fill="none" stroke="#e5c76d" stroke-linecap="round" stroke-width="14"/>
+  <circle cx="388" cy="124" r="13" fill="#00d4aa"/>
+</svg>

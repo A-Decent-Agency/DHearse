@@ -189,10 +189,22 @@ use a private-key `.env`:
 4. Back up the studio progress after each step. After the listing is verified,
    export the public evidence for the pinned announcement workflow to verify.
 
-Leave `SUPPORTER_ENS_NAME` unset for this mint. It is an optional release-site
-setting, not a mint requirement, and this flow does not change ENS. Keep the
-announcement workflow disabled until its evidence and purchase route are
-reviewed. A successful mint alone does not establish real audio delivery,
+The version release includes a Pages deployment, the exact tagged-site IPFS
+CID, and the `dhearse.decentagency.eth` profile. Set `SUPPORTER_ENS_NAME` to
+that name before preparation so the frozen manifest binds the intended ENS
+identity. The authorized Ethereum controller separately creates the subname
+and sets its contenthash to the verified site CID, `avatar` to
+`ipfs://SITE_CID/img/avatar.svg`, `header` to
+`ipfs://SITE_CID/img/banner.svg`, and `url` to
+`https://a-decent-agency.github.io/DHearse/`. Verify the records after receipts;
+release preparation itself never writes ENS.
+
+Pages and IPFS serve the public prototype interface, not the Node audio
+service. Live rooms still require the documented worker configuration.
+Ethereum ENS control is separate from Base Product-mint administrator
+authority; never grant a role merely to get past a failed mint preflight.
+Keep the announcement workflow disabled until its evidence and purchase route
+are reviewed. A successful mint alone does not establish real audio delivery,
 production readiness, or completion of the separate rehearsal acceptance gates.
 
 ## License and attribution
