@@ -20,7 +20,7 @@ jobs:
       tag: ${{ inputs.tag || github.event.release.tag_name }}
       head_ref: 8523309e99126f5df84400317e6401c583525124
       product_name: DHearse
-      tagline: A private, customizable audio rehearsal room.
+      tagline: 'Prototype: a private, customizable audio rehearsal room.'
       ens_name: ${{ vars.SUPPORTER_ENS_NAME }}
     secrets:
       PINATA_JWT: ${{ secrets.PINATA_JWT }}

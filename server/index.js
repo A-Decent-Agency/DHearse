@@ -15,6 +15,7 @@ const mime = new Map([
   ['.html', 'text/html; charset=utf-8'],
   ['.js', 'text/javascript; charset=utf-8'],
   ['.mjs', 'text/javascript; charset=utf-8'],
+  ['.svg', 'image/svg+xml'],
 ]);
 
 function required(env, key) {
@@ -49,6 +50,7 @@ function publicPath(pathname) {
   const isPublic = target === join(root, 'index.html') ||
     target === join(root, 'dhearse.config.js') ||
     target.startsWith(join(root, 'css') + sep) ||
+    target.startsWith(join(root, 'img') + sep) ||
     target.startsWith(join(root, 'js') + sep);
   return isPublic && (mime.has(extname(target)) || target.endsWith('.html')) ? target : null;
 }

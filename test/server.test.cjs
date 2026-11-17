@@ -15,6 +15,13 @@ test('standalone worker serves the widget, restricts CORS, and keeps server file
   assert.equal(page.status, 200);
   assert.match(await page.text(), /DHearse · Private rehearsal/);
 
+  for (const asset of ['avatar', 'banner']) {
+    const artwork = await fetch(`${base}/img/${asset}.svg`);
+    assert.equal(artwork.status, 200);
+    assert.equal(artwork.headers.get('content-type'), 'image/svg+xml');
+    assert.match(await artwork.text(), /<svg/);
+  }
+
   const status = await fetch(`${base}/api/private-rehearsal/status`);
   assert.equal(status.status, 503);
   assert.deepEqual(await status.json(), { configured: false });
