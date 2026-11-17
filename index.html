@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="strict-origin">
+  <title>DHearse · Private rehearsal</title>
+  <link rel="stylesheet" href="css/live-audio.css">
+  <script src="dhearse.config.js"></script>
+</head>
+<body class="live-audio-room rehearsal-room">
+  <header class="rehearsal-welcome">
+    <div><p class="rehearsal-eyebrow">DHEARSE · PRIVATE REHEARSAL</p>
+      <h1 id="dhearse-title">Private rehearsal</h1>
+      <p id="rehearsal-intro">A private practice stage for artists, musicians and audio engineers to test their setup before a live session.</p>
+    </div>
+  </header>
+  <div class="studio-signal-strip" aria-hidden="true"><span>♫</span><span>🎙</span><span>✦</span><span>♬</span><span>◉</span></div>
+  <p class="rehearsal-private">Private practice · Not a public broadcast · No recording</p>
+  <output id="status" class="rehearsal-status" role="status" aria-live="polite">Checking availability…</output>
+  <section id="join" class="rehearsal-card">
+    <h2>1 · Make yourself at home</h2>
+    <details class="room-entry-info">
+      <summary aria-label="Why sign to enter?">i</summary>
+      <p>Administrators and anyone who has accepted a live-performance invitation can start a room at any time. Bandmates with that room's unique link can sign in with any wallet. Up to six people per room.</p>
+      <p>No gas, payment, token approval or booking acceptance. Your private key never leaves your wallet. This signature also confirms consent to private live audio with whoever is in the room—not recording or public broadcast.</p>
+      <p>Each rehearsal has a separate private link. Keep it private. The host and engineers can remove someone or close the room. Links expire when everyone leaves, at the four-hour limit, or after a worker restart.</p>
+    </details>
+    <p>Start your rehearsal, or use a host's room-specific link to join as a guest. No payment or transaction.</p>
+    <button id="join-room" type="button" disabled>Sign consent and enter</button>
+    <a href="index.html" rel="noreferrer">Start a new rehearsal instead</a>
+  </section>
+  <section id="controls" class="rehearsal-card" hidden>
+    <h2>2 · Let's hear you</h2>
+    <p id="next-step">Set up your booth, choose your input, then start your microphone.</p>
+    <fieldset id="booth" class="booth-setup">
+      <legend>🎧 Booth setup · required before your mic starts</legend>
+      <ol class="booth-steps">
+        <li>Plug your headphones into your <b>audio interface</b>, not the computer.</li>
+        <li>Turn the interface's <b>direct monitor</b> on. You hear yourself instantly, with no delay.</li>
+        <li>Put effects in your interface or mixer, before the browser, so listeners hear them too.</li>
+        <li><b>Turn the radio off</b> on every other tab, phone and speaker. It runs seconds behind you and sounds doubled.</li>
+      </ol>
+      <label for="booth-mode">How will you hear yourself?</label>
+      <select id="booth-mode">
+        <option value="">Choose how you will hear yourself…</option>
+        <option value="direct">Headphones in my interface · direct monitor on (recommended)</option>
+        <option value="unplugged">No headphones · unplugged</option>
+        <option value="browser">Browser monitor · delayed, practice only</option>
+      </select>
+      <label class="booth-confirm" for="booth-radio-off"><input id="booth-radio-off" type="checkbox"> The radio is off on every other tab, phone and device</label>
+      <output id="booth-status" role="status" aria-live="polite">Choose how you will hear yourself, then confirm the radio is off everywhere else.</output>
+    </fieldset>
+    <label>Microphone / audio interface <select id="input"><option value="">Default audio input</option></select></label>
+    <button id="devices" class="rehearsal-secondary" type="button">Find my microphone / interface</button>
+    <div class="rehearsal-actions">
+      <button id="publish" class="rehearsal-primary" type="button">Start my microphone</button>
+      <button id="leave" class="rehearsal-secondary" type="button" disabled>Stop audio</button>
+    </div>
+    <div class="rehearsal-meter">
+      <label for="mic-level">Your input level <span id="mic-state">Microphone off</span></label>
+      <meter id="mic-level" min="0" max="1" value="0" aria-label="Local microphone input level"></meter>
+      <small id="meter-note">Local input only; the delivery check below verifies the connection.</small>
+    </div>
+    <p id="delivery" class="rehearsal-delivery" role="status" aria-live="polite">Delivery check: start your microphone first.</p>
+    <section class="rehearsal-people" aria-label="Who's in the room">
+      <h3>Who's here</h3>
+      <pre id="people" role="status" aria-live="polite">Nobody else is here yet.</pre>
+      <div id="engineer-tools" hidden>
+        <label for="remove-who">Host / engineer: remove someone from this session</label>
+        <select id="remove-who"><option value="">Choose someone…</option></select>
+        <button id="remove" class="rehearsal-secondary" type="button">Remove</button>
+      </div>
+    </section>
+    <p class="rehearsal-hint">The delivery check verifies what reaches the room. Bandmates hear each other over the internet, so expect a short delay between players. Hosts: before they play, ask which booth setup they chose. For a public show, follow the event host's official soundcheck and monitoring requirements. The browser monitor is a practice-only experiment. Make sure no delayed playback is playing nearby.</p>
+    <fieldset class="self-monitor">
+      <legend>Browser monitor · delayed, practice only</legend>
+      <button id="monitor-output-devices" type="button">Choose / list audio outputs</button>
+      <label for="monitor-output">Interface / headphones output</label>
+      <select id="monitor-output"><option value="">System default output</option></select>
+      <output id="monitor-output-status" role="status" aria-live="polite"></output>
+      <label class="monitor-toggle" for="monitor-toggle"><input id="monitor-toggle" type="checkbox" aria-describedby="monitor-warning"> Hear my input</label>
+      <label for="monitor-mix">Headphone mix · local only</label>
+      <select id="monitor-mix">
+        <option value="stereo">Stereo · separate L / R</option>
+        <option value="mono">Centered mono · both ears</option>
+      </select>
+      <label for="monitor-volume">Headphone monitor level</label>
+      <input id="monitor-volume" type="range" min="0" max="1" step="0.05" value="0.25">
+      <output id="monitor-status" role="status" aria-live="polite">Headphone monitor is off.</output>
+      <p id="monitor-warning" class="monitor-warning">Your headphone monitor belongs in your interface. Hear my input works only when Booth setup says Browser monitor. That choice is for practice only, and shows keep it off. It arrives late, so turn the interface's direct monitor off, start your mic first, then use headphones. Centered mono mixes mono/stereo input locally; it cannot change your interface's direct-monitor routing. If you hear echo, delay or feedback, uncheck Hear my input. Your microphone keeps sending to the room.</p>
+    </fieldset>
+    <details class="rehearsal-details">
+      <summary>Listen to the room</summary>
+      <button id="listen" class="rehearsal-secondary" type="button">Listen only · mic off</button>
+      <audio id="audio" hidden playsinline></audio>
+      <div id="remote-audio"></div>
+      <p>Starting your microphone also plays everyone else in the room. Listen only plays them without sending your mic. This is separate from hearing your own input. If you're alone, there is nobody else to hear.</p>
+    </details>
+    <section class="rehearsal-card" aria-label="Invite your band">
+      <p id="invitation"></p>
+      <label for="invite-link">This rehearsal's private invitation link</label>
+      <input id="invite-link" type="url" readonly spellcheck="false">
+      <button id="copy-invite" type="button">Copy band invitation</button>
+      <p id="deadline"></p>
+    </section>
+    <details class="rehearsal-details">
+      <summary>Your session & help</summary>
+      <p>If your pass ends, sign in again; you rejoin the same session. If the mic is blocked, allow microphone access in your browser's site settings, then retry. If your meter stays still, check the selected input and interface gain.</p>
+      <p>This link is for private practice only. A host application's official show, soundcheck, eligibility and payment flows are separate.</p>
+    </details>
+    <button id="end" type="button" hidden>Host / engineer: close this rehearsal</button>
+  </section>
+  <details class="rehearsal-details rehearsal-footnote">
+    <summary>About this private room</summary>
+    <p>Practice does not create a booking, move money or count as an official soundcheck.</p>
+    <p>A separate room opens when an eligible host signs in and closes when everyone leaves, after four hours, or when the host or an engineer closes it. Worker restart ends existing invitations. Closure is best-effort while the worker is down: browsers stop at the deadline, and the worker deletes the room after recovery.</p>
+  </details>
+  <aside class="studio-helper" aria-label="Private rehearsal setup help">
+    <div><p><strong>Setup guide</strong> <span>Practice guidance · not a live conversation.</span></p>
+      <details>
+        <summary>Quick soundcheck fixes</summary>
+        <ul>
+          <li>Hear yourself through your interface: headphones in the interface, direct monitor on, Hear my input off.</li>
+          <li>Hearing yourself twice or late? The radio or browser monitor is playing somewhere. Turn it off; your mic keeps sending.</li>
+          <li>Headphones won't fit the interface? Use a 3.5 mm to ¼-inch stereo adapter.</li>
+          <li>If no input appears, allow microphone access in browser site settings, then reload and choose your mic or interface.</li>
+          <li>If the meter is quiet, check the interface input, cable and gain. The local meter is not proof of room delivery.</li>
+        </ul>
+      </details>
+    </div>
+  </aside>
+  <script type="module" src="js/rehearsal.mjs"></script>
+</body>
+</html>

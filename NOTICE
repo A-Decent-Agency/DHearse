@@ -1,0 +1,16 @@
+DHearse
+Copyright 2026 The Jolly LaMa (TheJollyLaMa) and A Decent Agency contributors
+
+DHearse adapts the private rehearsal-room implementation from DecentBusking:
+https://github.com/TheJollyLaMa/DecentBusking
+The adapted source code is licensed under Apache License 2.0 (see LICENSE).
+Original artwork and other non-code creative works retain their own licenses;
+no DecentBusking artwork is included in this repository.
+
+Please retain this NOTICE when redistributing DHearse or a derivative. Credit
+"The Jolly LaMa / A Decent Agency" and the DecentBusking source project.
+Third-party packages retain their own licenses and notices.
+
+The names "A Decent Agency", "DecentBusking", "DHearse", and other Decent
+product names and logos are not licensed beyond describing project origin
+(Apache-2.0 section 6).

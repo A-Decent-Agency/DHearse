@@ -1,0 +1,26 @@
+name: Prepare Supporter DNFT
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Published release tag to prepare
+        required: true
+permissions:
+  contents: write
+  issues: write
+concurrency:
+  group: supporter-${{ github.repository }}
+  cancel-in-progress: false
+jobs:
+  prepare:
+    uses: TheJollyLaMa/DecentHead/.github/workflows/product-supporter-prepare.yml@8523309e99126f5df84400317e6401c583525124
+    with:
+      tag: ${{ inputs.tag || github.event.release.tag_name }}
+      head_ref: 8523309e99126f5df84400317e6401c583525124
+      product_name: DHearse
+      tagline: A private, customizable audio rehearsal room.
+      ens_name: ${{ vars.SUPPORTER_ENS_NAME }}
+    secrets:
+      PINATA_JWT: ${{ secrets.PINATA_JWT }}

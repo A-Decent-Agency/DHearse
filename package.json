@@ -1,0 +1,22 @@
+{
+  "name": "dhearse",
+  "version": "0.1.0",
+  "private": false,
+  "description": "A customizable private audio rehearsal widget for embedding in web apps.",
+  "type": "module",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "start": "node --env-file-if-exists=.env server/index.js",
+    "test": "node --test test/*.test.cjs"
+  },
+  "dependencies": {
+    "@livekit/rtc-node": "1.2.1",
+    "ethers": "^6.17.0",
+    "ipfs-unixfs-importer": "^17.1.1",
+    "livekit-client": "2.23.0",
+    "livekit-server-sdk": "2.19.2",
+    "multiformats": "^13.4.2"
+  }
+}
