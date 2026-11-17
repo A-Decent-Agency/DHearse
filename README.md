@@ -164,6 +164,37 @@ after the ENS subname and the deployed release site are verified. No mint,
 ENS change, listing, announcement, or transfer is performed by this repository
 setup.
 
+### First version mint
+
+The initial `v0.1.0` Supporter can present the working prototype; real-device
+audio and second-host acceptance are separate product gates and are not implied
+by the mint. Keep the release description clear that this is a prototype.
+
+This follows the existing DecentMarket Supporter Studio flow and does **not**
+use a private-key `.env`:
+
+1. Add the Pinata JWT as the DHearse repository Actions secret `PINATA_JWT`.
+   It is used only by the pinned release-preparation workflow to pin the tagged
+   source, artwork, and metadata. Never put it in this repository or send it in
+   chat.
+2. Publish the GitHub release for the exact tag `v0.1.0`. The workflow prepares
+   and attaches `supporter-release.json` and `supporter-metadata.json`, then
+   opens a steward review issue. It does not mint or list anything.
+3. Review the release assets and terms. In DecentMarket's Supporter Studio,
+   import those two JSON files and connect the creator wallet on Base. The
+   studio verifies the release and contract before presenting four separate
+   wallet-confirmed steps: register the token, mint 1,000 editions, transfer
+   them to the approved escrow, and list them at 10 USDC each. It uses the
+   connected wallet; no private key is put in an `.env` or CI secret.
+4. Back up the studio progress after each step. After the listing is verified,
+   export the public evidence for the pinned announcement workflow to verify.
+
+Leave `SUPPORTER_ENS_NAME` unset for this mint. It is an optional release-site
+setting, not a mint requirement, and this flow does not change ENS. Keep the
+announcement workflow disabled until its evidence and purchase route are
+reviewed. A successful mint alone does not establish real audio delivery,
+production readiness, or completion of the separate rehearsal acceptance gates.
+
 ## License and attribution
 
 Code: Apache-2.0. See [LICENSE](./LICENSE) and [NOTICE](./NOTICE). Creative
